@@ -24,6 +24,7 @@ public class panelGame extends JPanel {
 	int yPerso = 300;
 	int xImage = 0;
 	int compteur = 0;
+	int nbImage = 0;
 	
 	public panelGame(){
 		this.setSize(1000,500);
@@ -48,7 +49,9 @@ public class panelGame extends JPanel {
 
         g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
         g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
-        g.drawImage(perso, xPerso, yPerso, 56,86, this);
+        //g.drawImage(perso, xPerso, yPerso, 56,86, this);
+       // g.drawImage(perso, xPerso, yPerso, xPerso+56, yPerso+86, 0,0,114,222,this);
+        displayCharacter(g);
         resetBackground();
         if(compteur==3) {
         xImage--;
@@ -56,28 +59,42 @@ public class panelGame extends JPanel {
         }
         compteur++;
         
-        genererMonstre();
-        afficherMonstre(g);
+        generateMonster();
+        displayMonster(g);
         repaint();
        // revalidate();
     }
+	
+	public void displayCharacter(Graphics g) {
+		/*try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		g.drawImage(perso, xPerso, yPerso, xPerso+56, yPerso+86, 128*nbImage,0,128*(nbImage+1),222,this);
+		nbImage++;
+		if(nbImage == 4) {
+			nbImage = 0;
+		}
+	}
 	
 	public void resetBackground() {
 		if(xImage <= -this.getWidth())
 			xImage = 0;
 	}
 	
-	public void genererMonstre()  {
+	public void generateMonster()  {
 		Random r = new Random();
 		int valeur  = r.nextInt(1000);
-		if(valeur < 5 && listMonster.size() < 3) {
+		if(valeur < 5 && listMonster.size() < 50) {
 			System.out.println("oui");
 			Monster m = new Monster();
 			listMonster.add(m);
 		}	
 	}
 	
-	public void afficherMonstre(Graphics g) {
+	public void displayMonster(Graphics g) {
 		for(int i=0; i<listMonster.size(); i++) {
 				System.out.println("non : " + listMonster.get(i).getX() + " " + listMonster.get(i).getY());
 				listMonster.get(i).moveMonster();

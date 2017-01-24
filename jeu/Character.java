@@ -1,6 +1,5 @@
 package jeu;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -12,7 +11,7 @@ public class Character extends Entity {
 		this.y = 300;
 		this.width = 56;
 		this.height = 86;
-		this.location = "/IHM/Ressources/bob.png";
+		this.location = "/IHM/Ressources/bob_sprite.png";
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream(location));
 		} catch (IOException e) {
