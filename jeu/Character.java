@@ -26,12 +26,4 @@ public class Character extends Entity {
 		else
 			return true;
 	}
-	
-	public void moveHorizontal(int x) {
-		this.x += x;
-	}
-	
-	public void moveVertical(int y) {
-		this.y += y;
-	}
 }
