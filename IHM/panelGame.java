@@ -9,12 +9,12 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import jeu.Character;
 import jeu.Monster;
+import GraphicMotor.keyListener;
 
 public class panelGame extends JPanel {
 	
-	Character p;
+	//Character p;
 	Image perso;
 	Image background;
 	Image background2;
@@ -26,15 +26,23 @@ public class panelGame extends JPanel {
 	int compteur = 0;
 	int nbImage = 0;
 	
+	//public static keyListener kl = new keyListener();
+
 	public panelGame(){
 		this.setSize(1000,500);
 		this.setVisible(true);
 		
+		Game.borders[0] = 20;
+		Game.borders[1] = 20;
+		Game.borders[2] = 950;
+		Game.borders[3] = 420;
+		
 		listMonster = new ArrayList<>();
-		p = new Character();
+		//this.addKeyListener(kl);
+		//p = new Character();
 		
 		try {
-			perso = p.getImage();
+			perso = Game.bob.getImage();
 			//perso = ImageIO.read(getClass().getResourceAsStream("Ressources/bob.png"));
 			background = ImageIO.read(getClass().getResource("Ressources/background.jpg"));
 			background2 = ImageIO.read(getClass().getResource("Ressources/background.jpg"));
@@ -43,24 +51,27 @@ public class panelGame extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//kl.shifting();
 	}
 	
 	public void paintComponent(Graphics g) {
-
+		//System.out.println("oui");
         g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
         g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
+		g.drawRect(Game.borders[0], Game.borders[1], Game.borders[2], Game.borders[3]);
         //g.drawImage(perso, xPerso, yPerso, 56,86, this);
        // g.drawImage(perso, xPerso, yPerso, xPerso+56, yPerso+86, 0,0,114,222,this);
         displayCharacter(g);
-        resetBackground();
+        /*resetBackground();
         if(compteur==3) {
         xImage--;
         compteur=0;
         }
-        compteur++;
+        compteur++;*/
         
-        generateMonster();
-        displayMonster(g);
+        //generateMonster();
+        //displayMonster(g);
+        
         repaint();
        // revalidate();
     }
@@ -72,8 +83,8 @@ public class panelGame extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		g.drawImage(perso, xPerso, yPerso, xPerso+56, yPerso+86, 128*nbImage,0,128*(nbImage+1),222,this);
-		nbImage++;
+		g.drawImage(perso, Game.bob.getX(), Game.bob.getY(), Game.bob.getX()+56, Game.bob.getY()+86, 128*nbImage,0,128*(nbImage+1),222,this);
+		//nbImage++;
 		if(nbImage == 4) {
 			nbImage = 0;
 		}
