@@ -4,8 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import jeu.Character;
-import GraphicMotor.ShiftingManager;
-import GraphicMotor.keyListener;
+import GameField.Map;
+import PhysicEngine.ShiftingManager;
+import PhysicEngine.keyListener;
 
 public class Game extends JFrame{
 	
@@ -32,7 +33,7 @@ public class Game extends JFrame{
 	}
 	
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 	 bob = new Character();
    	 instance = new Game();
    }

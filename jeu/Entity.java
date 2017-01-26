@@ -1,6 +1,5 @@
 package jeu;
 
-import java.awt.image.BufferedImage;
 
 public abstract class Entity {
 
@@ -9,14 +8,14 @@ public abstract class Entity {
 	int width;
 	int height;
 	String location;
-	BufferedImage image;
+	/*BufferedImage image;
 	
 	public BufferedImage getImage() {
 		return image;
 	}
 	public void setImage(BufferedImage image) {
 		this.image = image;
-	}
+	}*/
 	public int getX() {
 		return x;
 	}

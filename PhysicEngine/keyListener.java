@@ -1,4 +1,4 @@
-package GraphicMotor;
+package PhysicEngine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

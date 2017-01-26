@@ -10,11 +10,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import jeu.Monster;
-import GraphicMotor.keyListener;
+import GameField.Map;
+import RessourcesFactory.RessourcesFactory;
 
 public class panelGame extends JPanel {
 	
-	//Character p;
+	Map m;
 	Image perso;
 	Image background;
 	Image background2;
@@ -38,15 +39,14 @@ public class panelGame extends JPanel {
 		Game.borders[3] = 420;
 		
 		listMonster = new ArrayList<>();
+		Map m = new Map();
+		RessourcesFactory.loadImage();
 		//this.addKeyListener(kl);
-		//p = new Character();
 		
 		try {
-			perso = Game.bob.getImage();
-			//perso = ImageIO.read(getClass().getResourceAsStream("Ressources/bob.png"));
+
 			background = ImageIO.read(getClass().getResource("Ressources/background.jpg"));
 			background2 = ImageIO.read(getClass().getResource("Ressources/background.jpg"));
-			//boo = ImageIO.read(getClass().getResourceAsStream("Ressources/background.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,40 +55,19 @@ public class panelGame extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-		//System.out.println("oui");
-        g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
-        g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
+	    g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
+	    // g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
 		g.drawRect(Game.borders[0], Game.borders[1], Game.borders[2], Game.borders[3]);
-        //g.drawImage(perso, xPerso, yPerso, 56,86, this);
-       // g.drawImage(perso, xPerso, yPerso, xPerso+56, yPerso+86, 0,0,114,222,this);
-        displayCharacter(g);
-        /*resetBackground();
-        if(compteur==3) {
-        xImage--;
-        compteur=0;
-        }
-        compteur++;*/
+		Game.bob.drawCharacter(g);
+       
+		m.chargerMap("src/IHM/Ressources/Level/level1.txt", g);
+
         
         //generateMonster();
         //displayMonster(g);
         
         repaint();
-       // revalidate();
     }
-	
-	public void displayCharacter(Graphics g) {
-		/*try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		g.drawImage(perso, Game.bob.getX(), Game.bob.getY(), Game.bob.getX()+56, Game.bob.getY()+86, 128*nbImage,0,128*(nbImage+1),222,this);
-		//nbImage++;
-		if(nbImage == 4) {
-			nbImage = 0;
-		}
-	}
 	
 	public void resetBackground() {
 		if(xImage <= -this.getWidth())
@@ -109,7 +88,7 @@ public class panelGame extends JPanel {
 		for(int i=0; i<listMonster.size(); i++) {
 				System.out.println("non : " + listMonster.get(i).getX() + " " + listMonster.get(i).getY());
 				listMonster.get(i).moveMonster();
-				g.drawImage(listMonster.get(i).getImage(), listMonster.get(i).getX(), listMonster.get(i).getY(), listMonster.get(i).getWidth(), listMonster.get(i).getHeight(), this);
+				//g.drawImage(listMonster.get(i).getImage(), listMonster.get(i).getX(), listMonster.get(i).getY(), listMonster.get(i).getWidth(), listMonster.get(i).getHeight(), this);
 				
 				if(listMonster.get(i).getX() <= -96)
 					listMonster.remove(i);

@@ -1,10 +1,6 @@
 package jeu;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 public class Monster extends Entity {
 	
@@ -15,13 +11,13 @@ public class Monster extends Entity {
 		this.y = r.nextInt(500);
 		this.width = 96;
 		this.height = 96;
-		this.location = "/IHM/Ressources/fantome.png";
+		/*this.location = "/IHM/Ressources/fantome.png";
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream(location));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void moveMonster() {

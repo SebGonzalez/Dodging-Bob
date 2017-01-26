@@ -1,4 +1,4 @@
-package GraphicMotor;
+package PhysicEngine;
 
 import IHM.Game;
 
@@ -9,7 +9,7 @@ public class ShiftingManager {
 	public static void shifting() {
 		
 		while (true) {
-			System.out.println(montee);
+			//System.out.println(montee);
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
