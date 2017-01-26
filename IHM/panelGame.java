@@ -39,7 +39,7 @@ public class panelGame extends JPanel {
 		Game.borders[3] = 420;
 		
 		listMonster = new ArrayList<>();
-		Map m = new Map();
+		 m = new Map();
 		RessourcesFactory.loadImage();
 		//this.addKeyListener(kl);
 		
@@ -55,7 +55,7 @@ public class panelGame extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-	    g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
+	   // g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
 	    // g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
 		g.drawRect(Game.borders[0], Game.borders[1], Game.borders[2], Game.borders[3]);
 		Game.bob.drawCharacter(g);

@@ -28,8 +28,10 @@ public class BMPImage {
      inBMP.skipBytes(18);
 
      //Maintenant, on lit la largeur et la hauteur de l'image
-     int width = readInt(inBMP) / nbTile;      
+     int width = readInt(inBMP);  
+     //System.out.println(width);
      int height = readInt(inBMP);
+    // System.out.println(" oui " + height);
      
      //On saute les données inutiles del'entête
      inBMP.skipBytes(28);
@@ -40,7 +42,7 @@ public class BMPImage {
      
      //Lecture des données
      for(int y = height - 1; y >= 0; y--){
-        for(int x = 0; x < width; x++){
+        for(int x = nbTile*(width/8); x < (nbTile+1)*(width/8); x++){
           //Récupération des couleurs
           img.setRGB(x, y, readColor(inBMP));
         }

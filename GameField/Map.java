@@ -18,12 +18,11 @@ public class Map {
 	}
 	
 	public void chargerMap(String fichier, Graphics g) {
-		String imageBmp = "";
+		String imageBmp = "src/IHM/Ressources/Level/";
 		int nbTile = 0;
 		int plateauTileLargeur = 0;
 		int plateauTileLongueur = 0;
 		String lignePlateau = "";
-		System.out.println("oui");
 		
 		try{
 			InputStream ips = new FileInputStream(fichier); 
@@ -34,19 +33,19 @@ public class Map {
 				//System.out.println(ligne);
 				//chaine+=ligne+"\n";
 			//}
-			imageBmp = br.readLine();
-			System.out.println("Image bmp : " + imageBmp);
+			imageBmp += br.readLine();
+			//System.out.println("Image bmp : " + imageBmp);
 			File fichierBmp = new File(imageBmp);
 			nbTile = Integer.parseInt(br.readLine());
-			System.out.println("nbTile : " + nbTile);
+			//System.out.println("nbTile : " + nbTile);
 			for(int i = 0; i<nbTile; i++) {
-				listTile.add(new Tile(br.readLine(), nbTile, fichierBmp));
+				listTile.add(new Tile(br.readLine(), i, fichierBmp));
 			}
 			
 			plateauTileLargeur = Integer.parseInt(br.readLine());
-			System.out.println("plateauTileLargeur : " + plateauTileLargeur);
+			//System.out.println("plateauTileLargeur : " + plateauTileLargeur);
 			plateauTileLongueur = Integer.parseInt(br.readLine());
-			System.out.println("plateauTileLongueur : " + plateauTileLongueur);
+			//System.out.println("plateauTileLongueur : " + plateauTileLongueur);
 			
 			for(int j=0; j<plateauTileLongueur; j++) {
 				lignePlateau = br.readLine();

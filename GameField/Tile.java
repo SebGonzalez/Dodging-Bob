@@ -31,7 +31,8 @@ public class Tile {
 	}
 	
 	public void drawTile(Graphics g, int i, int y, int taille) {
-		g.drawImage(img, i/2, y*taille, taille, taille, null);
+		taille = taille*2;
+		g.drawImage(img, i/2*taille, y*taille, taille, taille, null);
 	}
 
 	
