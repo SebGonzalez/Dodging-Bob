@@ -19,7 +19,7 @@ public class ShiftingManager {
 			// deplacement droite gauche
 			if (Game.bob.getX() >= Game.borders[0] && keyListener.Left) {
 				Game.bob.moveHorizontal(-1);
-			} else if (Game.bob.getX() <= Game.borders[2] && keyListener.Right) {
+			} else if (Game.bob.getX() <= Game.borders[2] && keyListener.Right && !Game.bob.collisionWall("right")) {
 				Game.bob.moveHorizontal(1);
 			}
 			
@@ -38,7 +38,7 @@ public class ShiftingManager {
 					montee = false;
 				}
 			}
-			if(!montee && Game.bob.getY() < (Game.borders[3] - Game.bob.getHeight())) {
+			if(!montee && Game.bob.getY() < (Game.borders[3] - Game.bob.getHeight()) && !Game.bob.collisionWall("down")) {
 				Game.bob.moveVertical(2);
 			}
 		}

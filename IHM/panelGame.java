@@ -15,7 +15,6 @@ import RessourcesFactory.RessourcesFactory;
 
 public class panelGame extends JPanel {
 	
-	Map m;
 	Image perso;
 	Image background;
 	Image background2;
@@ -35,11 +34,10 @@ public class panelGame extends JPanel {
 		
 		Game.borders[0] = 20;
 		Game.borders[1] = 20;
-		Game.borders[2] = 950;
-		Game.borders[3] = 420;
+		Game.borders[2] = 600;
+		Game.borders[3] = 560;
 		
 		listMonster = new ArrayList<>();
-		 m = new Map();
 		RessourcesFactory.loadImage();
 		//this.addKeyListener(kl);
 		
@@ -55,12 +53,9 @@ public class panelGame extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-	   // g.drawImage(background, xImage, 0, this.getWidth(), this.getHeight(), this);
-	    // g.drawImage(background2, xImage+this.getWidth(), 0, this.getWidth(), this.getHeight(), this);
-		g.drawRect(Game.borders[0], Game.borders[1], Game.borders[2], Game.borders[3]);
-		Game.bob.drawCharacter(g);
        
-		m.chargerMap("src/IHM/Ressources/Level/level1.txt", g);
+		Game.map.chargerMap(g);
+		Game.bob.drawCharacter(g);
 
         
         //generateMonster();

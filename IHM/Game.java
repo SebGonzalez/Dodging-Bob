@@ -11,6 +11,7 @@ import PhysicEngine.keyListener;
 public class Game extends JFrame{
 	
 	public static Character bob;
+	public static Map map;
 	public static Game instance;
 	public static int[] borders = new int[4];
 	panelGame jeu;
@@ -18,7 +19,7 @@ public class Game extends JFrame{
 	public static keyListener kl = new keyListener();
 	
 	public Game() {
-		this.setSize(1000,500);
+		this.setSize(720+20,624+40);
 		
 		jeu = new panelGame();
 		this.setContentPane(jeu);
@@ -35,6 +36,7 @@ public class Game extends JFrame{
 	
 	public static void main(String[] args) {
 	 bob = new Character();
+	 map = new Map("src/IHM/Ressources/Level/level1.txt");
    	 instance = new Game();
    }
 }

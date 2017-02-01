@@ -42,7 +42,8 @@ public class BMPImage {
      
      //Lecture des données
      for(int y = height - 1; y >= 0; y--){
-        for(int x = nbTile*(width/8); x < (nbTile+1)*(width/8); x++){
+        for(int x = 0; x < width; x++){
+        	//System.out.println("nb : " + nbTile + " x : " + x);
           //Récupération des couleurs
           img.setRGB(x, y, readColor(inBMP));
         }

@@ -2,6 +2,7 @@ package jeu;
 
 import java.awt.Graphics;
 
+import IHM.Game;
 import RessourcesFactory.RessourcesFactory;
 
 public class Character extends Entity {
@@ -10,7 +11,7 @@ public class Character extends Entity {
 	
 	public Character() {
 		this.x = 20;
-		this.y = 300;
+		this.y = 500;
 		this.width = 56;
 		this.height = 86;
 		/*this.location = "/IHM/Ressources/bob_sprite.png";
@@ -20,6 +21,27 @@ public class Character extends Entity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+	}
+	
+	public boolean collisionWall(String type) {
+		if(type.equals("right")) {
+			int xTile = (x+width+2)/48;
+			int yTile = (y)/48;
+			if(Game.map.positionTile[xTile][yTile] != 0) {
+				System.out.println("x : " + xTile + " y : " + yTile);
+				return true;
+			}
+		}
+		else if(type.equals("down")) {
+			int xTile = (x+width/2)/48;
+			int yTile = (y+height)/48;
+			if(Game.map.positionTile[xTile][yTile] != 0) {
+				System.out.println("x : " + xTile + " y : " + yTile);
+				return true;
+			}
+		}
+		return false;
+			
 	}
 	
 	public boolean collisionMonster(Monster m) {

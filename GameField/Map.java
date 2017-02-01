@@ -10,49 +10,72 @@ import java.util.ArrayList;
 
 public class Map {
 	
-	 ArrayList<Tile> listTile;
-	 int sizeTile = 16;
+	ArrayList<Tile> listTile;
+	String fichier;
+	int sizeTile = 24;
+	String imageBmp = "src/IHM/Ressources/Level/";
+	int nbTile = 0;
+	int plateauTileLargeur = 0;
+	int plateauTileLongueur = 0;
+	String lignePlateau = "";
+	
+	public int[][] positionTile;
 	 
-	public Map() {
+	public Map(String fichier) {
+		this.fichier = fichier;
+		//liste contenant les tile
 		listTile = new ArrayList<Tile>();
+		
+		try {
+		InputStream ips = new FileInputStream(fichier); 
+		InputStreamReader ipsr = new InputStreamReader(ips);
+		BufferedReader br = new BufferedReader(ipsr);
+
+		//on récupère le chemin du fichier bmp (1ère ligne du fichier txt)
+		imageBmp += br.readLine();
+		
+		//On créé un fichier contenant l'image
+		File fichierBmp = new File(imageBmp);
+		
+		//on recup la 2eme ligne correspondant aux nombre de tile
+		nbTile = Integer.parseInt(br.readLine());
+		
+		//on récupère le type de chaque tile et on l'ajoute à la liste
+		for(int i = 0; i<nbTile; i++) {
+			listTile.add(new Tile(br.readLine(), i, fichierBmp));
+		}
+		
+		plateauTileLargeur = Integer.parseInt(br.readLine());
+		plateauTileLongueur = Integer.parseInt(br.readLine());
+		positionTile = new int[plateauTileLargeur][plateauTileLongueur];
+		br.close(); 
+		}
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
 	}
 	
-	public void chargerMap(String fichier, Graphics g) {
-		String imageBmp = "src/IHM/Ressources/Level/";
-		int nbTile = 0;
-		int plateauTileLargeur = 0;
-		int plateauTileLongueur = 0;
-		String lignePlateau = "";
+	public void chargerMap(Graphics g) {
 		
 		try{
 			InputStream ips = new FileInputStream(fichier); 
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
-			String ligne;
-			//while ((ligne=br.readLine())!=null){
-				//System.out.println(ligne);
-				//chaine+=ligne+"\n";
-			//}
-			imageBmp += br.readLine();
-			//System.out.println("Image bmp : " + imageBmp);
-			File fichierBmp = new File(imageBmp);
-			nbTile = Integer.parseInt(br.readLine());
-			//System.out.println("nbTile : " + nbTile);
-			for(int i = 0; i<nbTile; i++) {
-				listTile.add(new Tile(br.readLine(), i, fichierBmp));
-			}
-			
-			plateauTileLargeur = Integer.parseInt(br.readLine());
-			//System.out.println("plateauTileLargeur : " + plateauTileLargeur);
-			plateauTileLongueur = Integer.parseInt(br.readLine());
-			//System.out.println("plateauTileLongueur : " + plateauTileLongueur);
+
+			br.readLine();
+			br.readLine();
+			br.readLine(); br.readLine(); br.readLine(); br.readLine(); br.readLine(); br.readLine(); br.readLine(); br.readLine();
+			br.readLine();
+			br.readLine();
 			
 			for(int j=0; j<plateauTileLongueur; j++) {
 				lignePlateau = br.readLine();
 				for(int y=0; y<lignePlateau.length(); y+=2) {
-					listTile.get(Integer.parseInt(""+lignePlateau.charAt(y))).drawTile(g, y, j, sizeTile);;
+					positionTile[y/2][j] = Integer.parseInt(""+lignePlateau.charAt(y));
+					listTile.get(Integer.parseInt(""+lignePlateau.charAt(y))).drawTile(g, y, j, sizeTile);
 				}
 			}
+
 			br.close(); 
 		}		
 		catch (Exception e){
