@@ -27,7 +27,7 @@ public class Map {
 		listTile = new ArrayList<Tile>();
 		
 		try {
-		InputStream ips = new FileInputStream(fichier); 
+		InputStream ips = getClass().getResourceAsStream(fichier);
 		InputStreamReader ipsr = new InputStreamReader(ips);
 		BufferedReader br = new BufferedReader(ipsr);
 
@@ -35,6 +35,7 @@ public class Map {
 		imageBmp += br.readLine();
 		
 		//On créé un fichier contenant l'image
+		System.out.println(imageBmp);
 		File fichierBmp = new File(imageBmp);
 		
 		//on recup la 2eme ligne correspondant aux nombre de tile
@@ -58,7 +59,7 @@ public class Map {
 	public void chargerMap(Graphics g) {
 		
 		try{
-			InputStream ips = new FileInputStream(fichier); 
+			InputStream ips = getClass().getResourceAsStream(fichier); 
 			InputStreamReader ipsr = new InputStreamReader(ips);
 			BufferedReader br = new BufferedReader(ipsr);
 

@@ -8,6 +8,7 @@ import RessourcesFactory.RessourcesFactory;
 public class Character extends Entity {
 	
 	int nbImage = 0;
+	public boolean moving = false;
 	
 	public Character() {
 		this.x = 20;
@@ -25,10 +26,18 @@ public class Character extends Entity {
 	
 	public boolean collisionWall(String type) {
 		if(type.equals("right")) {
-			int xTile = (x+width+2)/48;
+			int xTile = (x+width-25)/48;
 			int yTile = (y)/48;
-			if(Game.map.positionTile[xTile][yTile] != 0) {
-				System.out.println("x : " + xTile + " y : " + yTile);
+			int yTilebas = (y+height-10)/48;
+			if(Game.map.positionTile[xTile][yTile] != 0 || Game.map.positionTile[xTile][yTilebas] != 0) {
+				return true;
+			}
+		}
+		else if(type.equals("left")) {
+			int xTile = (x)/48;
+			int yTile = (y)/48;
+			int yTilebas = (y+height-10)/48;
+			if(Game.map.positionTile[xTile][yTile] != 0 || Game.map.positionTile[xTile][yTilebas] != 0) {
 				return true;
 			}
 		}
@@ -36,7 +45,13 @@ public class Character extends Entity {
 			int xTile = (x+width/2)/48;
 			int yTile = (y+height)/48;
 			if(Game.map.positionTile[xTile][yTile] != 0) {
-				System.out.println("x : " + xTile + " y : " + yTile);
+				return true;
+			}
+		}
+		else if(type.equals("up")) {
+			int xTile = (x+width/2)/48;
+			int yTile = (y-3)/48;
+			if(Game.map.positionTile[xTile][yTile] != 0) {
 				return true;
 			}
 		}
@@ -67,10 +82,15 @@ public class Character extends Entity {
 		e.printStackTrace();
 	}*/
 		g.drawImage(RessourcesFactory.getImage("character"), x, y, x+56, y+86, 128*nbImage,0,128*(nbImage+1),222,null);
-
-	nbImage++;
-	if(nbImage == 4) {
-		nbImage = 0;
-	}
+		
+		if(moving) {	
+			nbImage++;
+			if(nbImage == 4) {
+				nbImage = 0;
+				}
+		}
+		else {
+			nbImage = 2;
+		}
 	}
 }

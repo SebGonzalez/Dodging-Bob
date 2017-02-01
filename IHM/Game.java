@@ -23,7 +23,7 @@ public class Game extends JFrame{
 		
 		jeu = new panelGame();
 		this.setContentPane(jeu);
-		
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
@@ -36,7 +36,7 @@ public class Game extends JFrame{
 	
 	public static void main(String[] args) {
 	 bob = new Character();
-	 map = new Map("src/IHM/Ressources/Level/level1.txt");
+	 map = new Map("/IHM/Ressources/Level/level1.txt");
    	 instance = new Game();
    }
 }
