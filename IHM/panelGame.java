@@ -13,7 +13,7 @@ import jeu.Monster;
 import GameField.Map;
 import RessourcesFactory.RessourcesFactory;
 
-public class panelGame extends JPanel {
+public class PanelGame extends JPanel {
 	
 	Image perso;
 	Image background;
@@ -28,13 +28,13 @@ public class panelGame extends JPanel {
 	
 	//public static keyListener kl = new keyListener();
 
-	public panelGame(){
+	public PanelGame(){
 		this.setSize(1000,500);
 		this.setVisible(true);
 		
 		Game.borders[0] = 20;
-		Game.borders[1] = 20;
-		Game.borders[2] = 600;
+		Game.borders[1] = 0;
+		Game.borders[2] = 1000;
 		Game.borders[3] = 560;
 		
 		listMonster = new ArrayList<>();
@@ -60,8 +60,7 @@ public class panelGame extends JPanel {
         
         //generateMonster();
         //displayMonster(g);
-        
-        repaint();
+		repaint();
     }
 	
 	public void resetBackground() {

@@ -3,6 +3,7 @@ package GameField;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
 
 
 public class Tile {
@@ -32,7 +33,7 @@ public class Tile {
 	
 	public void drawTile(Graphics g, int i, int y, int taille) {
 		//taille = taille*2;
-		g.drawImage(img, i/2*taille*2, y*taille*2,((i+2)/2)*taille*2, (y+1)*taille*2, taille*nb, 0,taille*(nb+1), 16, null);
+		g.drawImage(img, i*(taille*2), y*taille*2,(i+1)*(taille*2), (y+1)*(taille*2), taille*nb, 0,taille*(nb+1), 16, null);
 	}
 
 	

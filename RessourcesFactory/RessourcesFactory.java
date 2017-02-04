@@ -23,14 +23,21 @@ public class RessourcesFactory {
 		}
 	}
 	
-	public static Image getImage(String type) {
-		if(type.equals("character"))
-				return imageCharacterB;
-
-		else if(type.equals("monster"))
-			return imageMonsterB;
+	public static Image getImage(TypeImage type) {
 		
-		return null;
+		BufferedImage img = null;
+		switch(type) {
+			case Character:
+				img = imageCharacterB;
+				break;
+			case Monster:
+				img =  imageMonsterB;
+				break;
+			default:
+				img = null;
+				break;
+		}
+		return img;
 	}
 	
 }

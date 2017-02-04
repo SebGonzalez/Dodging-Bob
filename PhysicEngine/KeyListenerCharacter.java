@@ -3,9 +3,7 @@ package PhysicEngine;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import IHM.Game;
-
-public class keyListener implements KeyListener {
+public class KeyListenerCharacter implements KeyListener {
 
 	public static boolean Up = false;
 	public static boolean Down = false;
@@ -13,6 +11,7 @@ public class keyListener implements KeyListener {
 	public static boolean Right = false;
 	
 	public void keyPressed(KeyEvent arg0) {
+		//touche z q s d
 		if (arg0.getKeyCode() == 90)
 			Up = true;
 		if (arg0.getKeyCode() == 81)
@@ -34,6 +33,7 @@ public class keyListener implements KeyListener {
 			Right = false;
 	}
 
-	public void keyTyped(KeyEvent arg0) {
-	}
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
 }

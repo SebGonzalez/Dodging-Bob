@@ -1,5 +1,6 @@
 package PhysicEngine;
 
+import GameField.Map;
 import IHM.Game;
 
 public class ShiftingManager {
@@ -10,6 +11,7 @@ public class ShiftingManager {
 		
 		while (true) {
 			//System.out.println(montee);
+			System.out.println(" oui " + Game.bob.getX() + " " + Map.xScroll);
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -17,10 +19,10 @@ public class ShiftingManager {
 				e.printStackTrace();
 			}
 			// deplacement droite gauche
-			if (Game.bob.getX() >= Game.borders[0] && keyListener.Left && !Game.bob.collisionWall("left")) {
+			if (/*Game.bob.getX() > Game.borders[0]*/ Map.xScroll > Game.borders[0]  && KeyListenerCharacter.Left && !Game.bob.collisionWall("left")) {
 				Game.bob.moving = true;
 				Game.bob.moveHorizontal(-1);
-			} else if (Game.bob.getX() <= Game.borders[2] && keyListener.Right && !Game.bob.collisionWall("right")) {
+			} else if (Game.bob.getX() <= Game.borders[2] && KeyListenerCharacter.Right && !Game.bob.collisionWall("right")) {
 				Game.bob.moving = true;
 				Game.bob.moveHorizontal(1);
 			}
@@ -29,7 +31,7 @@ public class ShiftingManager {
 			}
 			
 			// saut (hard)
-			if(keyListener.Up && !montee && !Game.bob.collisionWall("up")) {
+			if(KeyListenerCharacter.Up && !montee && !Game.bob.collisionWall("up")) {
 				Game.bob.moving = true;
 				montee = true;
 				for(int i=0; i<80; i++) {

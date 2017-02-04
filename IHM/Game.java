@@ -6,7 +6,7 @@ import javax.swing.WindowConstants;
 import jeu.Character;
 import GameField.Map;
 import PhysicEngine.ShiftingManager;
-import PhysicEngine.keyListener;
+import PhysicEngine.KeyListenerCharacter;
 
 public class Game extends JFrame{
 	
@@ -14,14 +14,14 @@ public class Game extends JFrame{
 	public static Map map;
 	public static Game instance;
 	public static int[] borders = new int[4];
-	panelGame jeu;
+	PanelGame jeu;
 	
-	public static keyListener kl = new keyListener();
+	public static KeyListenerCharacter kl = new KeyListenerCharacter();
 	
 	public Game() {
 		this.setSize(720+20,624+40);
 		
-		jeu = new panelGame();
+		jeu = new PanelGame();
 		this.setContentPane(jeu);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
