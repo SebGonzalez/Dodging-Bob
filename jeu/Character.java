@@ -1,6 +1,10 @@
 package jeu;
 
 import java.awt.Graphics;
+import java.awt.Point;
+
+import org.jdesktop.core.animation.timing.Animator;
+import org.jdesktop.core.animation.timing.PropertySetter;
 
 import GameField.Map;
 import IHM.Game;
@@ -75,6 +79,12 @@ public class Character extends Entity {
 	}
 	
 	public void moveVertical(int y) {
+		/*Point origLocation = new Point(x, y);
+		Point destLocation = new Point(origLocation.x+5, origLocation.y);
+		PropertySetter setter = new PropertySetter(Game.class, "location", origLocation, destLocation);
+		Animator anim = new Animator(1000, setter);
+		anim.start();*/
+
 		this.y += y;
 	}
 	

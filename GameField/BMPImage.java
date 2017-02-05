@@ -20,9 +20,9 @@ public class BMPImage {
   
 @return Image généré*/
 
- public static Image readBMP(File filename, int nbTile) {
-   try{
-     DataInputStream inBMP = new DataInputStream(new FileInputStream(filename));
+ public static Image readBMP(String filename, int nbTile) {
+   try (
+     DataInputStream inBMP = new DataInputStream(BMPImage.class.getResourceAsStream(filename)); ) {
 
      //On va lire le début de l'entête
      inBMP.skipBytes(18);

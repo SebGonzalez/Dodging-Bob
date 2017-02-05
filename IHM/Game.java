@@ -20,7 +20,7 @@ public class Game extends JFrame{
 	
 	public Game() {
 		this.setSize(720+20,624+40);
-		
+
 		jeu = new PanelGame();
 		this.setContentPane(jeu);
 		this.setLocationRelativeTo(null);

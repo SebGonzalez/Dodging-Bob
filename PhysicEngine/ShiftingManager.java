@@ -11,7 +11,7 @@ public class ShiftingManager {
 		
 		while (true) {
 			//System.out.println(montee);
-			System.out.println(" oui " + Game.bob.getX() + " " + Map.xScroll);
+			//System.out.println(" oui " + Game.bob.getX() + " " + Map.xScroll);
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {

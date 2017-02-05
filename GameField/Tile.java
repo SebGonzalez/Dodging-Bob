@@ -4,16 +4,17 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 
 public class Tile {
 
 	boolean plein;
 	int nb;
-	File fichierBmp;
+	String fichierBmp;
 	Image img;
 	
-	public Tile(String statut, int nb, File fichierBmp) {
+	public Tile(String statut, int nb, String fichierBmp) {
 		if(statut.equals("ciel"))
 			plein = false;
 		else

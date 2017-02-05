@@ -2,20 +2,16 @@ package GameField;
 
 import java.awt.Graphics;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import IHM.Game;
 
 public class Map {
 	
 	ArrayList<Tile> listTile;
 	String fichier;
 	int sizeTile = 24;
-	String imageBmp = "src/IHM/Ressources/Level/";
+	String imageBmp = "/IHM/Ressources/Level/";
 	int nbTile = 0;
 	int plateauTileLargeur = 0;
 	int plateauTileLongueur = 0;
@@ -32,24 +28,24 @@ public class Map {
 		//liste contenant les tile
 		listTile = new ArrayList<Tile>();
 		
-		try {
+		try (
 		InputStream ips = getClass().getResourceAsStream(fichier);
 		InputStreamReader ipsr = new InputStreamReader(ips);
-		BufferedReader br = new BufferedReader(ipsr);
+		BufferedReader br = new BufferedReader(ipsr); ) {
 
 		//on récupère le chemin du fichier bmp (1ère ligne du fichier txt)
 		imageBmp += br.readLine();
 		
 		//On créé un fichier contenant l'image
 		System.out.println(imageBmp);
-		File fichierBmp = new File(imageBmp);
+		//File fichierBmp = new File(imageBmp);
 		
 		//on recup la 2eme ligne correspondant aux nombre de tile
 		nbTile = Integer.parseInt(br.readLine());
 		
 		//on récupère le type de chaque tile et on l'ajoute à la liste
 		for(int i = 0; i<nbTile; i++) {
-			listTile.add(new Tile(br.readLine(), i, fichierBmp));
+			listTile.add(new Tile(br.readLine(), i, imageBmp));
 		}
 		
 		plateauTileLargeur = Integer.parseInt(br.readLine());
@@ -63,7 +59,6 @@ public class Map {
 				positionTile[y/2][j] = Integer.parseInt(""+lignePlateau.charAt(y));
 			}
 		}
-		br.close(); 
 		}
 		catch (Exception e){
 			System.out.println(e.toString());
