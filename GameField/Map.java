@@ -56,7 +56,7 @@ public class Map {
 			lignePlateau = br.readLine();
 			//System.out.println(lignePlateau);
 			for(int y=0; y<lignePlateau.length(); y+=2) {
-				positionTile[y/2][j] = Integer.parseInt(""+lignePlateau.charAt(y));
+				positionTile[y/2][j] = lignePlateau.charAt(y)-'0';
 			}
 		}
 		}
@@ -77,9 +77,18 @@ public class Map {
 	public void chargerMap(Graphics g) {
 		int compteur = 0;
 		for(int j=0; j<plateauTileLongueur; j++) {
-			for(int y=xScroll/48; y<(sizeFenetre/48); y++) {
-				listTile.get(positionTile[y][j]).drawTile(g, compteur, j, sizeTile);
-				compteur++;
+			for(int y=xScroll/48; y<( (sizeFenetre+xScroll)/48); y++) {
+				//System.out.println(xScroll/48);
+				if(y < 30) {
+					//System.out.println(y);
+					listTile.get(positionTile[y][j]).drawTile(g, compteur, j, sizeTile);
+					compteur++;
+				}
+				else {
+					listTile.get(0).drawTile(g, compteur, j, sizeTile);
+					compteur++;
+				}
+					
 			}
 			compteur = 0;
 

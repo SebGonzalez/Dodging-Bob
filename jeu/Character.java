@@ -17,7 +17,7 @@ public class Character extends Entity {
 	public boolean moving = false;
 	
 	public Character() {
-		this.x = 30;
+		this.x = 24;
 		this.y = 450;
 		this.width = 56;
 		this.height = 86;
