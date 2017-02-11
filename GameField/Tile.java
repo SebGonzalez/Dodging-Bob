@@ -34,7 +34,7 @@ public class Tile {
 	
 	public void drawTile(Graphics g, int i, int y, int taille) {
 		//taille = taille*2;
-		g.drawImage(img, i*(taille*2), y*taille*2,(i+1)*(taille*2), (y+1)*(taille*2), taille*nb, 0,taille*(nb+1), 16, null);
+		g.drawImage(img, i*(taille*2) - (Map.xScroll%48), y*taille*2,(i+1)*(taille*2)- (Map.xScroll%48), (y+1)*(taille*2), taille*nb, 0,taille*(nb+1), 16, null);
 	}
 
 	

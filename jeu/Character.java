@@ -1,10 +1,6 @@
 package jeu;
 
 import java.awt.Graphics;
-import java.awt.Point;
-
-import org.jdesktop.core.animation.timing.Animator;
-import org.jdesktop.core.animation.timing.PropertySetter;
 
 import GameField.Map;
 import IHM.Game;
@@ -57,7 +53,7 @@ public class Character extends Entity {
 		else if(type.equals("up")) {
 			int xTile = (x+width/2+Map.xScroll)/48;
 			int yTile = (y-3)/48;
-			if(Game.map.positionTile[xTile][yTile] != 0) {
+			if(Game.map.positionTile[xTile][yTile] != 0 || y < Game.borders[1]) {
 				return true;
 			}
 		}
@@ -73,9 +69,12 @@ public class Character extends Entity {
 	}
 	
 	public void moveHorizontal(int x) {
-		//this.x += x;
-		Map.xScroll += x;
-		//Map.sizeFenetre += (Map.xScroll + x);
+		//System.out.println(" x : " + this.x + " size : "  + Map.sizeFenetre/2);
+		if(this.x < Map.sizeFenetre/2 || Map.xScroll > (30*48)-Map.sizeFenetre) {
+			this.x += x;
+		}
+		else
+			Map.xScroll += x;
 	}
 	
 	public void moveVertical(int y) {

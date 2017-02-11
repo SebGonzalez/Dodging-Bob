@@ -53,7 +53,7 @@ public class PanelGame extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-       
+		super.paintComponent(g);
 		Game.map.chargerMap(g);
 		Game.bob.drawCharacter(g);
 

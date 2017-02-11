@@ -77,7 +77,7 @@ public class Map {
 	public void chargerMap(Graphics g) {
 		int compteur = 0;
 		for(int j=0; j<plateauTileLongueur; j++) {
-			for(int y=xScroll/48; y<( (sizeFenetre+xScroll)/48); y++) {
+			for(int y=(xScroll/48); y<(sizeFenetre+xScroll)/48 +1; y++) {
 				//System.out.println(xScroll/48);
 				if(y < 30) {
 					//System.out.println(y);
